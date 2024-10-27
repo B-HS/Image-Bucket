@@ -1,9 +1,7 @@
 services:
     app:
         container_name: image-bucket
-        build:
-            context: .
-            dockerfile: Dockerfile
+        image: 'image-bucket:latest'
         ports:
             - '10001:10001'
         volumes:
