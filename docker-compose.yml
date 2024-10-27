@@ -1,9 +1,11 @@
 services:
     app:
-        container_name: image-bucket
-        image: 'image-bucket:latest'
+        image: '${PROJECT_NAME}'
+        container_name: '${PROJECT_NAME}'
+        restart: always
         ports:
-            - '10001:10001'
+            - '${PROJECT_PORT}:10001'
         volumes:
             - ./images:/images
-        restart: always
+        environment:
+            - NODE_ENV=production
