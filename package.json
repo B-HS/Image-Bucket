@@ -1,0 +1,16 @@
+{
+  "name": "image-server",
+  "scripts": {
+    "dev": "bun run --hot server.ts"
+  },
+  "dependencies": {
+    "feconfig-bhs": "^1.0.7",
+    "hono": "^4.6.7",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3"
+  }
+}
