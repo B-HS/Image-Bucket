@@ -93,6 +93,6 @@ app.post('/image/upload', async (c) => {
 })
 
 export default {
-    port: 20002,
+    port: 10001,
     fetch: app.fetch,
 }
