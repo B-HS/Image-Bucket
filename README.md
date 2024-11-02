@@ -1,2 +1,2 @@
 # Image server
-- Check the docker-compose.yml for deploy
+- Check the deploy.yml for deploy where in .github's workflow folder
