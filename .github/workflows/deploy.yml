@@ -70,6 +70,14 @@ jobs:
                   password: ${{ secrets.SERVER_PASSWORD }}
                   port: ${{ secrets.SERVER_PORT }}
                   script: |
+                      export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+
+                      echo "== Docker Version =="
+                      docker --version
+
+                      echo "== docker compose version =="
+                      docker compose version || echo "docker compose not available"
+                      
                       cd Desktop/containers/${{ env.PROJECT_NAME }}
                       if [ ! -f ${{ env.PROJECT_NAME }}.tar ]; then
                           echo "Docker image file not found!"
