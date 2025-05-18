@@ -26,8 +26,8 @@ jobs:
         run: |
           docker buildx build \
             --platform linux/arm64 \
-            -t ${{ env.PROJECT_NAME }} \
             --load \
+            -t ${{ env.PROJECT_NAME }} \
             .
           docker save ${{ env.PROJECT_NAME }} -o ${{ env.PROJECT_NAME }}.tar
 
