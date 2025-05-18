@@ -3,7 +3,7 @@ name: Deploy Image Bucket
 on:
   push:
     branches:
-      - deploy-imagebucket
+      - deploy
 
 jobs:
   deploy-imagebucket:
