@@ -22,7 +22,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build & Save Image (Docker Buildx)
+      - name: Build & save image tar
         run: |
           docker buildx build \
             --platform linux/arm64 \
@@ -60,18 +60,18 @@ jobs:
             export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
             cd Desktop/containers/${{ env.PROJECT_NAME }}
 
-            # 이전 이미지 제거
             old=$(colima nerdctl -- images -q ${{ env.PROJECT_NAME }}:latest)
             [ -n "$old" ] && colima nerdctl -- rmi -f $old
 
-            # 새 이미지 로드
             colima nerdctl -- load -i ${{ env.PROJECT_NAME }}.tar
 
-            # 스택 내리고 올리기
-            PROJECT_NAME=${{ env.PROJECT_NAME }} PROJECT_PORT=${{ env.PROJECT_PORT }} \
-              colima nerdctl -- compose --env-file .env down
-            PROJECT_NAME=${{ env.PROJECT_NAME }} PROJECT_PORT=${{ env.PROJECT_PORT }} \
-              colima nerdctl -- compose --env-file .env up -d
+            cat <<EOF > .env
+            PROJECT_NAME=${{ env.PROJECT_NAME }}
+            PROJECT_PORT=${{ env.PROJECT_PORT }}
+            EOF
+
+            colima nerdctl -- compose --env-file .env down
+            colima nerdctl -- compose --env-file .env up -d
 
       - name: Cleanup local tar
         run: rm ${{ env.PROJECT_NAME }}.tar
