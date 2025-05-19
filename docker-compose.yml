@@ -1,11 +1,18 @@
 services:
-    app:
-        image: '${PROJECT_NAME}'
-        container_name: '${PROJECT_NAME}'
-        restart: always
-        ports:
-            - '${PROJECT_PORT}:10001'
-        volumes:
-            - ./images:/images
-        environment:
-            - NODE_ENV=production
+  imagebucket:
+    image: '${PROJECT_NAME}'
+    container_name: '${PROJECT_NAME}'
+    restart: always
+    ports:
+      - '${PROJECT_PORT}:10001'
+    volumes:
+      - ./images:/images
+    environment:
+      - NODE_ENV=production
+    networks:
+      - bblog-net
+
+networks:
+  bblog-net:
+    external:
+      name: bblog-net
