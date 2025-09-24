@@ -1,0 +1,22 @@
+{
+    "name": "bimage",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "bun run --watch src/index.ts",
+        "build": "bun build src/index.ts --outdir ./dist --target bun",
+        "build:standalone": "bun build src/index.ts --compile --outfile bimage",
+        "start": "bun run dist/index.js"
+    },
+    "dependencies": {
+        "hono": "^4.9.8",
+        "sharp": "^0.34.4",
+        "uuid": "^11.0.3"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "@types/uuid": "^10.0.0",
+        "feconfig-bhs": "^1.0.7",
+        "typescript": "^5.7.2"
+    }
+}
